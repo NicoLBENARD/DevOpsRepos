@@ -1,0 +1,882 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Bot.Builder.Core</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestAdapter.CreateConversation(System.String,System.Func{Microsoft.Bot.Builder.ITurnContext,System.Threading.Tasks.Task})">
+            <summary>
+            NOTE: this resets the queue, it doesn't actually maintain multiple converstion queues
+            </summary>
+            <param name="channelId"></param>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestAdapter.GetNextReply">
+            <summary>
+            Called by TestFlow to check next reply
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestAdapter.MakeActivity(System.String)">
+            <summary>
+            Called by TestFlow to get appropriate activity for conversationReference of testbot
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestAdapter.SendTextToBot(System.String,System.Func{Microsoft.Bot.Builder.ITurnContext,System.Threading.Tasks.Task})">
+            <summary>
+            Called by TestFlow to send text to the bot
+            </summary>
+            <param name="userSays"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.StartTest">
+            <summary>
+            Start the execution of the test flow
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.Send(System.String)">
+            <summary>
+            Send a message from the user to the bot
+            </summary>
+            <param name="userSays"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.Send(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Send an activity from the user to the bot
+            </summary>
+            <param name="userActivity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.Delay(System.UInt32)">
+            <summary>
+            Delay for time period 
+            </summary>
+            <param name="ms"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.AssertReply(System.String,System.String,System.UInt32)">
+            <summary>
+            Assert that reply is expected text
+            </summary>
+            <param name="expected"></param>
+            <param name="description"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.AssertReply(Microsoft.Bot.Schema.IActivity,System.String,System.UInt32)">
+            <summary>
+            Assert that the reply is expected activity 
+            </summary>
+            <param name="expected"></param>
+            <param name="description"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.AssertReply(System.Action{Microsoft.Bot.Schema.IActivity},System.String,System.UInt32)">
+            <summary>
+            Assert that the reply matches a custom validation routine
+            </summary>
+            <param name="validateActivity"></param>
+            <param name="description"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.Test(System.String,System.String,System.String,System.UInt32)">
+            <summary>
+            Say() -> shortcut for .Send(user).AssertReply(Expected)
+            </summary>
+            <param name="userSays"></param>
+            <param name="expected"></param>
+            <param name="description"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.Test(System.String,Microsoft.Bot.Schema.Activity,System.String,System.UInt32)">
+            <summary>
+            Test() -> shortcut for .Send(user).AssertReply(Expected)
+            </summary>
+            <param name="userSays"></param>
+            <param name="expected"></param>
+            <param name="description"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.Test(System.String,System.Action{Microsoft.Bot.Schema.IActivity},System.String,System.UInt32)">
+            <summary>
+            Say() -> shortcut for .Send(user).AssertReply(Expected)
+            </summary>
+            <param name="userSays"></param>
+            <param name="expected"></param>
+            <param name="description"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Adapters.TestFlow.AssertReplyOneOf(System.String[],System.String,System.UInt32)">
+            <summary>
+            Assert that reply is one of the candidate responses
+            </summary>
+            <param name="candidates"></param>
+            <param name="description"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.BotAssert">
+            <summary>
+            Provides methods for debugging Bot Builder code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAssert.ActivityNotNull(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Checks that an activity object is not <c>null</c>.
+            </summary>
+            <param name="activity">The activity object.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="activity"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAssert.ContextNotNull(Microsoft.Bot.Builder.ITurnContext)">
+            <summary>
+            Checks that a context object is not <c>null</c>.
+            </summary>
+            <param name="context">The context object.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="context"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAssert.ConversationReferenceNotNull(Microsoft.Bot.Schema.ConversationReference)">
+            <summary>
+            Checks that a conversation reference object is not <c>null</c>.
+            </summary>
+            <param name="reference">The conversation reference object.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="reference"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAssert.ActivityListNotNull(System.Collections.Generic.IEnumerable{Microsoft.Bot.Schema.Activity})">
+            <summary>
+            Checks that an activity collection is not <c>null</c>.
+            </summary>
+            <param name="activities">The activities.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="activities"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAssert.MiddlewareNotNull(Microsoft.Bot.Builder.IMiddleware)">
+            <summary>
+            Checks that a middleware object is not <c>null</c>.
+            </summary>
+            <param name="middleware">The middleware object.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="middleware"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAssert.MiddlewareNotNull(System.Collections.Generic.IEnumerable{Microsoft.Bot.Builder.IMiddleware})">
+            <summary>
+            Checks that a middleware collection is not <c>null</c>.
+            </summary>
+            <param name="middleware">The middleware.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="middleware"/> is <c>null</c>.</exception>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.BotAdapter">
+            <summary>
+            Represents a bot adapter that can connect a bot to a service endpoint. 
+            This class is abstract.
+            </summary>
+            <remarks>The bot adapter encapsulates authentication processes and sends 
+            activities to and receives activities from the Bot Connector Service. When your 
+            bot receives an activity, the adapter creates a context object, passes it to your 
+            bot's application logic, and sends responses back to the user's channel.
+            <para>Use <see cref="M:Microsoft.Bot.Builder.BotAdapter.Use(Microsoft.Bot.Builder.IMiddleware)"/> to add <see cref="T:Microsoft.Bot.Builder.IMiddleware"/> objects 
+            to your adapter’s middleware collection. The adapter processes and directs 
+            incoming activities in through the bot middleware pipeline to your bot’s logic 
+            and then back out again. As each activity flows in and out of the bot, each piece 
+            of middleware can inspect or act upon the activity, both before and after the bot 
+            logic runs.</para>
+            </remarks>
+            <seealso cref="T:Microsoft.Bot.Builder.ITurnContext"/>
+            <seealso cref="T:Microsoft.Bot.Schema.IActivity"/>
+            <seealso cref="T:Microsoft.Bot.IBot"/>
+            <seealso cref="T:Microsoft.Bot.Builder.IMiddleware"/>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.BotAdapter._middlewareSet">
+            <summary>
+            The collection of middleware in the adapter's pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAdapter.#ctor">
+            <summary>
+            Creates a default adapter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAdapter.Use(Microsoft.Bot.Builder.IMiddleware)">
+            <summary>
+            Adds middleware to the adapter's pipeline.
+            </summary>
+            <param name="middleware">The middleware to add.</param>
+            <returns>The updated adapter object.</returns>
+            <remarks>Middleware is added to the adapter at initialization time.
+            For each turn, the adapter calls middleware in the order in which you added it.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAdapter.SendActivities(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Schema.Activity[])">
+            <summary>
+            When overridden in a derived class, sends activities to the conversation.
+            </summary>       
+            <param name="context">The context object for the turn.</param>
+            <param name="activities">The activities to send.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>If the activities are successfully sent, the task result contains
+            an array of <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> objects containing the IDs that 
+            the receiving channel assigned to the activities.</remarks>
+            <seealso cref="M:Microsoft.Bot.Builder.ITurnContext.OnSendActivities(Microsoft.Bot.Builder.SendActivitiesHandler)"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAdapter.UpdateActivity(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Schema.Activity)">
+            <summary>
+            When overridden in a derived class, replaces an existing activity in the 
+            conversation.
+            </summary>
+            <param name="context">The context object for the turn.</param>
+            <param name="activity">New replacement activity.</param>        
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>If the activity is successfully sent, the task result contains
+            a <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> object containing the ID that the receiving 
+            channel assigned to the activity.
+            <para>Before calling this, set the ID of the replacement activity to the ID
+            of the activity to replace.</para></remarks>
+            <seealso cref="M:Microsoft.Bot.Builder.ITurnContext.OnUpdateActivity(Microsoft.Bot.Builder.UpdateActivityHandler)"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAdapter.DeleteActivity(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Schema.ConversationReference)">
+            <summary>
+            When overridden in a derived class, deletes an existing activity in the 
+            conversation.
+            </summary>
+            <param name="context">The context object for the turn.</param>
+            <param name="reference">Conversation reference for the activity to delete.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>The <see cref="P:Microsoft.Bot.Schema.ConversationReference.ActivityId"/> of the conversation
+            reference identifies the activity to delete.</remarks>
+            <seealso cref="M:Microsoft.Bot.Builder.ITurnContext.OnDeleteActivity(Microsoft.Bot.Builder.DeleteActivityHandler)"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAdapter.RunPipeline(Microsoft.Bot.Builder.ITurnContext,System.Func{Microsoft.Bot.Builder.ITurnContext,System.Threading.Tasks.Task},System.Threading.CancellationTokenSource)">
+            <summary>
+            Starts activity processing for the current bot turn.
+            </summary>
+            <param name="context">The turn's context object.</param>
+            <param name="callback">A callback method to run at the end of the pipeline.</param>
+            <param name="cancelToken">A cancellation token for the task.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="context"/> is null.</exception>
+            <remarks>The adapter calls middleware in the order in which you added it. 
+            The adapter passes in the context object for the turn and a next delegate, 
+            and the middleware calls the delegate to pass control to the next middleware 
+            in the pipeline. Once control reaches the end of the pipeline, the adapter calls 
+            the <paramref name="callback"/> method. If a middleware component doesn’t call 
+            the next delegate, the adapter does not call  any of the subsequent middleware’s 
+            <see cref="M:Microsoft.Bot.Builder.IMiddleware.OnTurn(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Builder.MiddlewareSet.NextDelegate)"/> 
+            methods or the callback method, and the pipeline short circuits.
+            <para>When the turn is initiated by a user activity (reactive messaging), the
+            callback method will be a reference to the bot's 
+            <see cref="M:Microsoft.Bot.IBot.OnTurn(Microsoft.Bot.Builder.ITurnContext)"/> method. When the turn is
+            initiated by a call to <see cref="!:ContinueConversation(ConversationReference, Func&lt;ITurnContext, Task&gt;)"/>
+            (proactive messaging), the callback method is the callback method that was provided in the call.</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAdapter.CreateConversation(System.String,System.Func{Microsoft.Bot.Builder.ITurnContext,System.Threading.Tasks.Task})">
+            <summary>
+            Creates a conversation on the specified channel.
+            </summary>
+            <param name="channelId">The ID of the channel.</param>
+            <param name="callback">A method to call when the new conversation is available.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+            <remarks>No base implementation is provided.</remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.BotAdapter.ContinueConversation(System.String,Microsoft.Bot.Schema.ConversationReference,System.Func{Microsoft.Bot.Builder.ITurnContext,System.Threading.Tasks.Task})">
+            <summary>
+            Sends a proactive message to a conversation.
+            </summary>
+            <param name="botAppId">The application ID of the bot. This paramter is ignored in 
+            single tenant the Adpters (Console, Test, etc) but is critical to the BotFrameworkAdapter
+            which is multi-tenant aware. </param>    
+            <param name="reference">A reference to the conversation to continue.</param>
+            <param name="callback">The method to call for the resulting bot turn.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>Call this method to proactively send a message to a conversation.
+            Most channels require a user to initaiate a conversation with a bot
+            before the bot can send activities to the user.</remarks>
+            <seealso cref="M:Microsoft.Bot.Builder.BotAdapter.RunPipeline(Microsoft.Bot.Builder.ITurnContext,System.Func{Microsoft.Bot.Builder.ITurnContext,System.Threading.Tasks.Task},System.Threading.CancellationTokenSource)"/>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.IMiddleware">
+            <summary>
+            Represents middleware that can operate on incoming activities.
+            </summary>
+            <remarks>A <see cref="T:Microsoft.Bot.Builder.BotAdapter"/> passes incoming activities from the user's 
+            channel to the middleware's <see cref="M:Microsoft.Bot.Builder.IMiddleware.OnTurn(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Builder.MiddlewareSet.NextDelegate)"/>
+            method.
+            <para>You can add middleware objects to your adapter’s middleware collection. The
+            adapter processes and directs incoming activities in through the bot middleware 
+            pipeline to your bot’s logic and then back out again. As each activity flows in 
+            and out of the bot, each piece of middleware can inspect or act upon the activity, 
+            both before and after the bot logic runs.</para>
+            <para>For each activity, the adapter calls middleware in the order in which you 
+            added it.</para>
+            </remarks>
+            <example>
+            This defines middleware that sends "before" and "after" messages
+            before and after the adapter calls the bot's 
+            <see cref="M:Microsoft.Bot.IBot.OnTurn(Microsoft.Bot.Builder.ITurnContext)"/> method.
+            <code>
+            public class SampleMiddleware : IMiddleware
+            {
+                public async Task OnTurn(ITurnContext context, MiddlewareSet.NextDelegate next)
+                {
+                    context.SendActivity("before");
+                    await next().ConfigureAwait(false);
+                    context.SendActivity("after");
+                }
+            }
+            </code>
+            </example>
+            <seealso cref="T:Microsoft.Bot.IBot"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.IMiddleware.OnTurn(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Builder.MiddlewareSet.NextDelegate)">
+            <summary>
+            Processess an incoming activity.
+            </summary>
+            <param name="context">The context object for this turn.</param>
+            <param name="next">The delegate to call to continue the bot middleware pipeline.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>Middleware calls the <paramref name="next"/> delegate to pass control to 
+            the next middleware in the pipeline. If middleware doesn’t call the next delegate,
+            the adapter does not call any of the subsequent middleware’s request handlers or the 
+            bot’s receive handler, and the pipeline short circuits.
+            <para>The <paramref name="context"/> provides information about the 
+            incoming activity, and other data needed to process the activity.</para>
+            </remarks>
+            <seealso cref="T:Microsoft.Bot.Builder.ITurnContext"/>
+            <seealso cref="T:Microsoft.Bot.Schema.IActivity"/>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.AnonymousReceiveMiddleware">
+            <summary>
+            Helper class for defining middleware by using a delegate or anonymous method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.AnonymousReceiveMiddleware.#ctor(System.Func{Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Builder.MiddlewareSet.NextDelegate,System.Threading.Tasks.Task})">
+            <summary>
+            Creates a middleware object that uses the provided method as its
+            process request handler.
+            </summary>
+            <param name="anonymousMethod">The method to use as the middleware's process 
+            request handler.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.AnonymousReceiveMiddleware.OnTurn(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Builder.MiddlewareSet.NextDelegate)">
+            <summary>
+            Uses the method provided in the <see cref="T:Microsoft.Bot.Builder.AnonymousReceiveMiddleware"/> to
+            process an incoming activity.
+            </summary>
+            <param name="context">The context object for this turn.</param>
+            <param name="next">The delegate to call to continue the bot middleware pipeline.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.SendActivitiesHandler">
+            <summary>
+            A method that can participate in send activity events for the current turn.
+            </summary>
+            <param name="context">The context object for the turn.</param>
+            <param name="activities">The activities to send.</param>
+            <param name="next">The delegate to call to continue event processing.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>A handler calls the <paramref name="next"/> delegate to pass control to 
+            the next registered handler. If a handler doesn’t call the next delegate,
+            the adapter does not call any of the subsequent handlers and does not send the
+            <paramref name="activities"/>.
+            </remarks>
+            <seealso cref="T:Microsoft.Bot.Builder.BotAdapter"/>
+            <seealso cref="T:Microsoft.Bot.Builder.UpdateActivityHandler"/>
+            <seealso cref="T:Microsoft.Bot.Builder.DeleteActivityHandler"/>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.UpdateActivityHandler">
+            <summary>
+            A method that can participate in update activity events for the current turn.
+            </summary>
+            <param name="context">The context object for the turn.</param>
+            <param name="activity">The replacement activity.</param>
+            <param name="next">The delegate to call to continue event processing.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>A handler calls the <paramref name="next"/> delegate to pass control to 
+            the next registered handler. If a handler doesn’t call the next delegate,
+            the adapter does not call any of the subsequent handlers and does not update the
+            activity.
+            <para>The activity's <see cref="P:Microsoft.Bot.Schema.IActivity.Id"/> indicates the activity in the
+            conversation to replace.</para>
+            </remarks>
+            <seealso cref="T:Microsoft.Bot.Builder.BotAdapter"/>
+            <seealso cref="T:Microsoft.Bot.Builder.SendActivitiesHandler"/>
+            <seealso cref="T:Microsoft.Bot.Builder.DeleteActivityHandler"/>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.DeleteActivityHandler">
+             <summary>
+             A method that can participate in delete activity events for the current turn.
+             </summary>
+             <param name="context">The context object for the turn.</param>
+             <param name="reference">The conversation containing the activity.</param>
+             <param name="next">The delegate to call to continue event processing.</param>
+             <returns>A task that represents the work queued to execute.</returns>
+             <remarks>A handler calls the <paramref name="next"/> delegate to pass control to 
+             the next registered handler. If a handler doesn’t call the next delegate,
+             the adapter does not call any of the subsequent handlers and does not delete the
+            activity.
+             <para>The conversation reference's <see cref="P:Microsoft.Bot.Schema.ConversationReference.ActivityId"/> 
+             indicates the activity in the conversation to replace.</para>
+             </remarks>
+             <seealso cref="T:Microsoft.Bot.Builder.BotAdapter"/>
+             <seealso cref="T:Microsoft.Bot.Builder.SendActivitiesHandler"/>
+             <seealso cref="T:Microsoft.Bot.Builder.UpdateActivityHandler"/>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.ITurnContext">
+            <summary>
+            Provides context for a turn of a bot.
+            </summary>
+            <remarks>Context provides information needed to process an incoming activity.
+            The context object is created by a <see cref="T:Microsoft.Bot.Builder.BotAdapter"/> and persists for the 
+            length of the turn.</remarks>
+            <seealso cref="T:Microsoft.Bot.IBot"/>
+            <seealso cref="T:Microsoft.Bot.Builder.IMiddleware"/>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.ITurnContext.Adapter">
+            <summary>
+            Gets the bot adapter that created this context object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.ITurnContext.Services">
+            <summary>
+            Gets the services registered on this context object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.ITurnContext.Activity">
+            <summary>
+            Incoming request
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.ITurnContext.Responded">
+            <summary>
+            Indicates whether at least one response was sent for the current turn.
+            </summary>
+            <value><c>true</c> if at least one response was sent for the current turn.</value>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.SendActivity(System.String,System.String,System.String)">
+            <summary>
+            Sends a message activity to the sender of the incoming activity.
+            </summary>
+            <param name="textReplyToSend">The text of the message to send.</param>
+            <param name="speak">Optional, text to be spoken by your bot on a speech-enabled 
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting, 
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is "acceptingInput".</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>If the activity is successfully sent, the task result contains
+            a <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> object containing the ID that the receiving 
+            channel assigned to the activity.
+            <para>See the channel's documentation for limits imposed upon the contents of 
+            <paramref name="textReplyToSend"/>.</para>
+            <para>To control various characteristics of your bot's speech such as voice, 
+            rate, volume, pronunciation, and pitch, specify <paramref name="speak"/> in 
+            Speech Synthesis Markup Language (SSML) format.</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.SendActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Sends an activity to the sender of the incoming activity.
+            </summary>
+            <param name="activity">The activity to send.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>If the activity is successfully sent, the task result contains
+            a <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> object containing the ID that the receiving 
+            channel assigned to the activity.</remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.SendActivities(Microsoft.Bot.Schema.IActivity[])">
+            <summary>
+            Sends a set of activities to the sender of the incoming activity.
+            </summary>
+            <param name="activities">The activities to send.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>If the activities are successfully sent, the task result contains
+            an array of <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> objects containing the IDs that 
+            the receiving channel assigned to the activities.</remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.UpdateActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Replaces an existing activity. 
+            </summary>
+            <param name="activity">New replacement activity.</param>        
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>If the activity is successfully sent, the task result contains
+            a <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> object containing the ID that the receiving 
+            channel assigned to the activity.
+            <para>Before calling this, set the ID of the replacement activity to the ID
+            of the activity to replace.</para></remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.DeleteActivity(System.String)">
+            <summary>
+            Deletes an existing activity.
+            </summary>
+            <param name="activityId">The ID of the activity to delete.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.DeleteActivity(Microsoft.Bot.Schema.ConversationReference)">
+            <summary>
+            Deletes an existing activity.
+            </summary>
+            <param name="conversationReference">The conversation containing the activity to delete.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>The conversation reference's <see cref="P:Microsoft.Bot.Schema.ConversationReference.ActivityId"/> 
+            indicates the activity in the conversation to delete.</remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.OnSendActivities(Microsoft.Bot.Builder.SendActivitiesHandler)">
+            <summary>
+            Adds a response handler for send activity operations.
+            </summary>
+            <param name="handler">The handler to add to the context object.</param>
+            <returns>The updated context object.</returns>
+            <remarks>When the context's <see cref="M:Microsoft.Bot.Builder.ITurnContext.SendActivity(Microsoft.Bot.Schema.IActivity)"/> 
+            or <see cref="M:Microsoft.Bot.Builder.ITurnContext.SendActivities(Microsoft.Bot.Schema.IActivity[])"/> methods are called, 
+            the adapter calls the registered handlers in the order in which they were 
+            added to the context object.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.OnUpdateActivity(Microsoft.Bot.Builder.UpdateActivityHandler)">
+            <summary>
+            Adds a response handler for update activity operations.
+            </summary>
+            <param name="handler">The handler to add to the context object.</param>
+            <returns>The updated context object.</returns>
+            <remarks>When the context's <see cref="M:Microsoft.Bot.Builder.ITurnContext.UpdateActivity(Microsoft.Bot.Schema.IActivity)"/> is called, 
+            the adapter calls the registered handlers in the order in which they were 
+            added to the context object.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContext.OnDeleteActivity(Microsoft.Bot.Builder.DeleteActivityHandler)">
+            <summary>
+            Adds a response handler for delete activity operations.
+            </summary>
+            <param name="handler">The handler to add to the context object.</param>
+            <returns>The updated context object.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="handler"/> is <c>null</c>.</exception>
+            <remarks>When the context's <see cref="M:Microsoft.Bot.Builder.ITurnContext.DeleteActivity(System.String)"/> is called, 
+            the adapter calls the registered handlers in the order in which they were 
+            added to the context object.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TraceExtensions.ITurnContextExtensions.TraceActivity(Microsoft.Bot.Builder.ITurnContext,System.String,System.Object,System.String,System.String)">
+            <summary>
+            Send a TraceActivity to transcript and/or emulator if attached
+            </summary>
+            <param name="turnContext"></param>
+            <param name="name">Name of the operation</param>
+            <param name="value">value of the operation</param>
+            <param name="valueType">valueType if helpful to identify the value schema (default is value.GetType().Name)</param>
+            <param name="label">descritive label of context. (Default is calling function name)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.MiddlewareSet.ReceiveActivityWithStatus(Microsoft.Bot.Builder.ITurnContext,System.Func{Microsoft.Bot.Builder.ITurnContext,System.Threading.Tasks.Task})">
+            <summary>
+            Intended to be called from Bot, this method performs exactly the same as the
+            standard ReceiveActivity, except that it runs a user-defined delegate returns 
+            if all Middlware in the receive pipeline was run.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.TurnContext">
+            <summary>
+            Provides context for a turn of a bot.
+            </summary>
+            <remarks>Context provides information needed to process an incoming activity.
+            The context object is created by a <see cref="T:Microsoft.Bot.Builder.BotAdapter"/> and persists for the 
+            length of the turn.</remarks>
+            <seealso cref="T:Microsoft.Bot.IBot"/>
+            <seealso cref="T:Microsoft.Bot.Builder.IMiddleware"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.#ctor(Microsoft.Bot.Builder.BotAdapter,Microsoft.Bot.Schema.Activity)">
+            <summary>
+            Creates a context object.
+            </summary>
+            <param name="adapter">The adapter creating the context.</param>
+            <param name="activity">The incoming activity for the turn;
+            or <c>null</c> for a turn for a proactive message.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="activity"/> or
+            <paramref name="adapter"/> is <c>null</c>.</exception>
+            <remarks>For use by bot adapter implementations only.</remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.OnSendActivities(Microsoft.Bot.Builder.SendActivitiesHandler)">
+            <summary>
+            Adds a response handler for send activity operations.
+            </summary>
+            <param name="handler">The handler to add to the context object.</param>
+            <returns>The updated context object.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="handler"/> is <c>null</c>.</exception>
+            <remarks>When the context's <see cref="M:Microsoft.Bot.Builder.TurnContext.SendActivity(Microsoft.Bot.Schema.IActivity)"/> 
+            or <see cref="M:Microsoft.Bot.Builder.TurnContext.SendActivities(Microsoft.Bot.Schema.IActivity[])"/> methods are called, 
+            the adapter calls the registered handlers in the order in which they were 
+            added to the context object.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.OnUpdateActivity(Microsoft.Bot.Builder.UpdateActivityHandler)">
+            <summary>
+            Adds a response handler for update activity operations.
+            </summary>
+            <param name="handler">The handler to add to the context object.</param>
+            <returns>The updated context object.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="handler"/> is <c>null</c>.</exception>
+            <remarks>When the context's <see cref="M:Microsoft.Bot.Builder.TurnContext.UpdateActivity(Microsoft.Bot.Schema.IActivity)"/> is called, 
+            the adapter calls the registered handlers in the order in which they were 
+            added to the context object.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.OnDeleteActivity(Microsoft.Bot.Builder.DeleteActivityHandler)">
+            <summary>
+            Adds a response handler for delete activity operations.
+            </summary>
+            <param name="handler">The handler to add to the context object.</param>
+            <returns>The updated context object.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="handler"/> is <c>null</c>.</exception>
+            <remarks>When the context's <see cref="M:Microsoft.Bot.Builder.TurnContext.DeleteActivity(System.String)"/> is called, 
+            the adapter calls the registered handlers in the order in which they were 
+            added to the context object.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.TurnContext.Adapter">
+            <summary>
+            Gets the bot adapter that created this context object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.TurnContext.Services">
+            <summary>
+            Gets the services registered on this context object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.TurnContext.Activity">
+            <summary>
+            Gets the activity associated with this turn; or <c>null</c> when processing
+            a proactive message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.TurnContext.Responded">
+            <summary>
+            Indicates whether at least one response was sent for the current turn.
+            </summary>
+            <value><c>true</c> if at least one response was sent for the current turn.</value>
+            <exception cref="T:System.ArgumentException">You attempted to set the value to <c>false</c>.</exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.SendActivity(System.String,System.String,System.String)">
+            <summary>
+            Sends a message activity to the sender of the incoming activity.
+            </summary>
+            <param name="textReplyToSend">The text of the message to send.</param>
+            <param name="speak">Optional, text to be spoken by your bot on a speech-enabled 
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting, 
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is null.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="textReplyToSend"/> is <c>null</c> or whitespace.</exception>
+            <remarks>If the activity is successfully sent, the task result contains
+            a <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> object containing the ID that the receiving 
+            channel assigned to the activity.
+            <para>See the channel's documentation for limits imposed upon the contents of 
+            <paramref name="textReplyToSend"/>.</para>
+            <para>To control various characteristics of your bot's speech such as voice, 
+            rate, volume, pronunciation, and pitch, specify <paramref name="speak"/> in 
+            Speech Synthesis Markup Language (SSML) format.</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.SendActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Sends an activity to the sender of the incoming activity.
+            </summary>
+            <param name="activity">The activity to send.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="activity"/> is <c>null</c>.</exception>
+            <remarks>If the activity is successfully sent, the task result contains
+            a <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> object containing the ID that the receiving 
+            channel assigned to the activity.</remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.SendActivities(Microsoft.Bot.Schema.IActivity[])">
+            <summary>
+            Sends a set of activities to the sender of the incoming activity.
+            </summary>
+            <param name="activities">The activities to send.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>If the activities are successfully sent, the task result contains
+            an array of <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> objects containing the IDs that 
+            the receiving channel assigned to the activities.</remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.UpdateActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Replaces an existing activity. 
+            </summary>
+            <param name="activity">New replacement activity.</param>        
+            <returns>A task that represents the work queued to execute.</returns>
+            <exception cref="T:Microsoft.Bot.Schema.ErrorResponseException">
+            The HTTP operation failed and the response contained additional information.</exception>
+            <exception cref="T:System.AggregateException">
+            One or more exceptions occurred during the operation.</exception>
+            <remarks>If the activity is successfully sent, the task result contains
+            a <see cref="T:Microsoft.Bot.Schema.ResourceResponse"/> object containing the ID that the receiving 
+            channel assigned to the activity.
+            <para>Before calling this, set the ID of the replacement activity to the ID
+            of the activity to replace.</para></remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.DeleteActivity(System.String)">
+            <summary>
+            Deletes an existing activity.
+            </summary>
+            <param name="activityId">The ID of the activity to delete.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <exception cref="T:Microsoft.Bot.Schema.ErrorResponseException">
+            The HTTP operation failed and the response contained additional information.</exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.DeleteActivity(Microsoft.Bot.Schema.ConversationReference)">
+            <summary>
+            Deletes an existing activity.
+            </summary>
+            <param name="conversationReference">The conversation containing the activity to delete.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <exception cref="T:Microsoft.Bot.Schema.ErrorResponseException">
+            The HTTP operation failed and the response contained additional information.</exception>
+            <remarks>The conversation reference's <see cref="P:Microsoft.Bot.Schema.ConversationReference.ActivityId"/> 
+            indicates the activity in the conversation to delete.</remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.GetConversationReference(Microsoft.Bot.Schema.Activity)">
+            <summary>
+            Creates a conversation reference from an activity.
+            </summary>
+            <param name="activity">The activity.</param>
+            <returns>A conversation reference for the conversation that contains the activity.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="activity"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContext.ApplyConversationReference(Microsoft.Bot.Schema.Activity,Microsoft.Bot.Schema.ConversationReference,System.Boolean)">
+            <summary>
+            Updates an activity with the delivery information from an existing 
+            conversation reference.
+            </summary>
+            <param name="activity">The activity to update.</param>
+            <param name="reference">The conversation reference.</param>
+            <param name="isIncoming">(Optional) <c>true</c> to treat the activity as an 
+            incoming activity, where the bot is the recipient; otherwaire <c>false</c>.
+            Default is <c>false</c>, and the activity will show the bot as the sender.</param>
+            <remarks>Call <see cref="M:Microsoft.Bot.Builder.TurnContext.GetConversationReference(Microsoft.Bot.Schema.Activity)"/> on an incoming
+            activity to get a conversation reference that you can then use to update an
+            outgoing activity with the correct delivery information.
+            <para>The <see cref="M:Microsoft.Bot.Builder.TurnContext.SendActivity(Microsoft.Bot.Schema.IActivity)"/> and <see cref="M:Microsoft.Bot.Builder.TurnContext.SendActivities(Microsoft.Bot.Schema.IActivity[])"/>
+            methods do this for you.</para>
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.ITurnContextServiceCollection">
+            <summary>
+            Represents a set of collection of services associated with the <see cref="T:Microsoft.Bot.Builder.ITurnContext"/>.
+            </summary>
+            <remarks>
+            TODO: add more details on what kind of services can/should be stored here, by whom and what the lifetime semantics are, etc.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContextServiceCollection.Add``1(System.String,``0)">
+            <summary>
+            Add a service with a specified key.
+            </summary>
+            <typeparam name="TService">The type of service to be added.</typeparam>
+            <param name="key">The key to store the service under.</param>
+            <param name="service">The service to add.</param>
+            <exception cref="T:Microsoft.Bot.Builder.ServiceKeyAlreadyRegisteredException">Thrown when a service is already registered with the specified <paramref name="key"/></exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.ITurnContextServiceCollection.Get``1(System.String)">
+            <summary>
+            Get a service by its key.
+            </summary>
+            <typeparam name="TService">The type of service to be retrieved.</typeparam>
+            <param name="key">The key of the service to get.</param>
+            <returns>The service stored under the specified key.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.ServiceKeyAlreadyRegisteredException">
+            <summary>
+            Thrown to indicate a service is already registered in a <see cref="T:Microsoft.Bot.Builder.ITurnContextServiceCollection"/> under the specified key.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.TurnContextServiceCollectionExtensions">
+            <summary>
+            Provides a set of convienience methods that extend the behavior of any <see cref="T:Microsoft.Bot.Builder.ITurnContextServiceCollection"/>. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContextServiceCollectionExtensions.Add``1(Microsoft.Bot.Builder.ITurnContextServiceCollection,``0)">
+            <summary>
+            Add a service using its full type name as the key.
+            </summary>
+            <typeparam name="TService">The type of service to be added.</typeparam>
+            <param name="service">The service to add.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContextServiceCollectionExtensions.Get``1(Microsoft.Bot.Builder.ITurnContextServiceCollection)">
+            <summary>
+            Get a service by type using its full type name as the key.
+            </summary>
+            <typeparam name="TService">The type of service to be retrieved.</typeparam>
+            <returns>The service stored under the specified key.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.TurnContextServiceCollectionExtensions.GetServices``1(Microsoft.Bot.Builder.ITurnContextServiceCollection)">
+            <summary>
+            Returns all entries in the collection of a specified type.
+            </summary>
+            <typeparam name="TService">The type of service to be found.</typeparam>
+            <param name="serviceCollection">An <see cref="T:Microsoft.Bot.Builder.ITurnContextServiceCollection"/> to search for services in.</param>
+            <returns>All instances of the requested service currently stored in the collection.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.TurnContextWrapper">
+            <summary>
+            Utility class to allow you to create custom TurnContext wrapper which wraps someone elses TurnContext 
+            </summary>
+            <remarks>
+            Adapters create the ITurnContext implementation which is then passed to the bot's logic handler
+            This class allows you to create your own ITurnContext which delegates to the BotContext passed to you
+            It simply passes all ITurnContext calls through to the inner ITurnContext.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Bot.IBot">
+            <summary>
+            Represents a bot that can operate on incoming activities.
+            </summary>
+            <remarks>A <see cref="T:Microsoft.Bot.Builder.BotAdapter"/> passes incoming activities from the user's 
+            channel to the bot's <see cref="M:Microsoft.Bot.IBot.OnTurn(Microsoft.Bot.Builder.ITurnContext)"/> method.</remarks>
+            <example>
+            This defines a bot that responds with "Hello world!" to any incoming message.
+            <code>
+            public class EchoBot : IBot
+            {
+                public async Task OnTurn(ITurnContext context)
+                {
+                    if (context.Activity.Type is ActivityTypes.Message)
+                    {
+                        await context.SendActivity("Hello world!");
+                    }
+                }
+            }
+            </code>
+            </example>
+            <seealso cref="T:Microsoft.Bot.Builder.IMiddleware"/>
+        </member>
+        <member name="M:Microsoft.Bot.IBot.OnTurn(Microsoft.Bot.Builder.ITurnContext)">
+            <summary>
+            Handles an incoming activity.
+            </summary>
+            <param name="turnContext">The context object for this turn.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>The <paramref name="turnContext"/> provides information about the 
+            incoming activity, and other data needed to process the activity.</remarks>
+            <seealso cref="T:Microsoft.Bot.Builder.ITurnContext"/>
+            <seealso cref="T:Microsoft.Bot.Schema.IActivity"/>
+        </member>
+    </members>
+</doc>

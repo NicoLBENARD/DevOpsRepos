@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>EZ.Azure</id>
+    <version>1.0.2</version>
+    <authors>EZ.Azure</authors>
+    <owners>EZ.Azure</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="EZ.Base" version="1.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="2.1.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+        <dependency id="Nito.AsyncEx" version="5.0.0-pre-05" exclude="Build,Analyzers" />
+        <dependency id="ServiceStack.Text.Core" version="5.4.0" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Annotations" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="4.5.1" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Caching" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="WindowsAzure.Storage" version="9.3.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="EZ.Base" version="1.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="2.1.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+        <dependency id="Nito.AsyncEx" version="5.0.0-pre-05" exclude="Build,Analyzers" />
+        <dependency id="ServiceStack.Text.Core" version="5.4.0" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Annotations" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="4.5.1" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Caching" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="WindowsAzure.Storage" version="9.3.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

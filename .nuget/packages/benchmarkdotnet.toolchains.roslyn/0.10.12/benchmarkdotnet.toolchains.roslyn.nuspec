@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>BenchmarkDotNet.Toolchains.Roslyn</id>
+        <version>0.10.12</version>
+        <authors>.NET Foundation and contributors</authors>
+        <owners>.NET Foundation and contributors</owners>
+        <licenseUrl>https://github.com/dotnet/BenchmarkDotNet/blob/master/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/dotnet/BenchmarkDotNet</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/dotnet/BenchmarkDotNet/master/docs/guide/logo.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Powerful .NET library for benchmarking</description>
+        <copyright>.NET Foundation and contributors</copyright>
+        <tags>benchmark benchmarking performance</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.6">
+                <dependency id="BenchmarkDotNet.Core" version="0.10.12" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.CodeAnalysis.CSharp" version="2.4.0" exclude="Build,Analyzers" />
+                <dependency id="System.Threading.Tasks" version="4.3.0" exclude="Build,Analyzers" />
+            </group>
+        </dependencies>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.6" />
+        </frameworkAssemblies>
+    </metadata>
+</package>

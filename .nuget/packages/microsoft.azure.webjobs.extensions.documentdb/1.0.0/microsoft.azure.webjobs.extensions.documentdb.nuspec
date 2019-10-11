@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.WebJobs.Extensions.DocumentDB</id>
+    <version>1.0.0</version>
+    <title>Microsoft.Azure.WebJobs.Extensions.DocumentDB</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_enu.htm</licenseUrl>
+    <projectUrl>https://azure.microsoft.com/en-us/documentation/articles/websites-webjobs-resources</projectUrl>
+    <description>This package contains the runtime assemblies for Microsoft.Azure.WebJobs.Extensions.DocumentDB. For more information, please visit https://azure.microsoft.com/en-us/documentation/articles/websites-webjobs-resources</description>
+    <summary>Microsoft.Azure.WebJobs.Extensions.DocumentDB adds DocumentDB binders to the WebJobs SDK.</summary>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>Microsoft Azure WebJobs Jobs Extensions DocumentDB document windowsazureofficial Web</tags>
+    <dependencies>
+      <dependency id="Microsoft.Azure.WebJobs.Extensions" version="2.0.0" />
+      <dependency id="Microsoft.Azure.DocumentDB" version="1.11.4" />
+    </dependencies>
+  </metadata>
+</package>

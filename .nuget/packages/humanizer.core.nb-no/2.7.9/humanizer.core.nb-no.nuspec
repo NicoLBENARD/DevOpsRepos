@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>Humanizer.Core.nb-NO</id>
+    <version>2.7.9</version>
+    <title>Humanizer Locale (nb-NO)</title>
+    <authors>Mehdi Khalili, Oren Novotny</authors>
+    <owners>Mehdi Khalili, Oren Novotny</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/Humanizr/Humanizer</projectUrl>
+    <iconUrl>https://raw.github.com/Humanizr/Humanizer/master/logo.png</iconUrl>
+    <description>Humanizer Locale Norwegian Bokmål (Norway) (nb-NO)</description>
+    <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
+    <language>nb-NO</language>
+    <dependencies>
+      <dependency id="Humanizer.Core" version="[2.7.9]" />
+    </dependencies>
+  </metadata>
+</package>

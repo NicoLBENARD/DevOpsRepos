@@ -1,0 +1,698 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Bot.Builder.Core.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.BotState`1">
+            <summary>
+            Abstract Base class which manages details of automatic loading and saving of bot state.
+            </summary>
+            <typeparam name="TState">The type of the bot state object.</typeparam>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.BotState`1.#ctor(Microsoft.Bot.Builder.Core.Extensions.IStorage,System.String,System.Func{Microsoft.Bot.Builder.ITurnContext,System.String},Microsoft.Bot.Builder.Core.Extensions.StateSettings)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Bot.Builder.Core.Extensions.BotState`1"/> middleware object.
+            </summary>
+            <param name="name">The name to use to load or save the state object.</param>
+            <param name="storage">The storage provider to use.</param>
+            <param name="settings">The state persistance options to use.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.BotState`1.OnTurn(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Builder.MiddlewareSet.NextDelegate)">
+            <summary>
+            Processess an incoming activity.
+            </summary>
+            <param name="context">The context object for this turn.</param>
+            <param name="next">The delegate to call to continue the bot middleware pipeline.</param>
+            <returns>A task that represents the work queued to execute.</returns>
+            <remarks>This middleware loads the state object on the leading edge of the middleware pipeline
+            and persists the state object on the trailing edge.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.BotState`1.Read(Microsoft.Bot.Builder.ITurnContext)">
+            <summary>
+            Reads state from storage.
+            </summary>
+            <typeparam name="TState">The type of the bot state object.</typeparam>
+            <param name="context">The context object for this turn.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.BotState`1.Write(Microsoft.Bot.Builder.ITurnContext,`0)">
+            <summary>
+            Writes state to storage.
+            </summary>
+            <param name="context">The context object for this turn.</param>
+            <param name="state">The state object.</param>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.ConversationState`1">
+            <summary>
+            Handles persistence of a conversation state object using the conversation ID as part of the key.
+            </summary>
+            <typeparam name="TState">The type of the conversation state object.</typeparam>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.Core.Extensions.ConversationState`1.PropertyName">
+            <summary>
+            The key to use to read and write this conversation state object to storage.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.ConversationState`1.#ctor(Microsoft.Bot.Builder.Core.Extensions.IStorage,Microsoft.Bot.Builder.Core.Extensions.StateSettings)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Bot.Builder.Core.Extensions.ConversationState`1"/> object.
+            </summary>
+            <param name="storage">The storage provider to use.</param>
+            <param name="settings">The state persistance options to use.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.ConversationState`1.Get(Microsoft.Bot.Builder.ITurnContext)">
+            <summary>
+            Gets the conversation state object from turn context.
+            </summary>
+            <param name="context">The context object for this turn.</param>
+            <returns>The coversation state object.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.UserState`1">
+            <summary>
+            Handles persistence of a user state object using the user ID as part of the key.
+            </summary>
+            <typeparam name="TState">The type of the user state object.</typeparam>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.Core.Extensions.UserState`1.PropertyName">
+            <summary>
+            The key to use to read and write this conversation state object to storage.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.UserState`1.#ctor(Microsoft.Bot.Builder.Core.Extensions.IStorage,Microsoft.Bot.Builder.Core.Extensions.StateSettings)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Bot.Builder.Core.Extensions.UserState`1"/> object.
+            </summary>
+            <param name="storage">The storage provider to use.</param>
+            <param name="settings">The state persistance options to use.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.UserState`1.Get(Microsoft.Bot.Builder.ITurnContext)">
+            <summary>
+            Gets the user state object from turn context.
+            </summary>
+            <param name="context">The context object for this turn.</param>
+            <returns>The user state object.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.StateTurnContextExtensions">
+            <summary>
+            Provides helper methods for getting state objects from the turn context.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.StateTurnContextExtensions.GetConversationState``1(Microsoft.Bot.Builder.ITurnContext)">
+            <summary>
+            Gets a conversation state object from the turn context.
+            </summary>
+            <typeparam name="TState">The type of the state object to get.</typeparam>
+            <param name="context">The context object for this turn.</param>
+            <returns>The state object.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.StateTurnContextExtensions.GetUserState``1(Microsoft.Bot.Builder.ITurnContext)">
+            <summary>
+            Gets a user state object from the turn context.
+            </summary>
+            <typeparam name="TState">The type of the state object to get.</typeparam>
+            <param name="context">The context object for this turn.</param>
+            <returns>The state object.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.CatchExceptionMiddleware`1">
+            <summary>
+            This piece of middleware can be added to allow you to handle exceptions when they are thrown
+            within your bot's code or middleware further down the pipeline. Using this handler you might 
+            send an appropriate message to the user to let them know that something has gone wrong.
+            You can specify the type of exception the middleware should catch and this middleware can be added
+            multiple times to allow you to handle different exception types in different ways.
+            </summary>
+            <typeparam name="T">
+            The type of the exception that you want to catch. This can be 'Exception' to
+            catch all or a specific type of exception
+            </typeparam>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.FileStorage">
+            <summary>
+            Models IStorage around a File System
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.FileTranscriptStore">
+            <summary>
+            The file transcript store stores transcripts in file system with each activity as a file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.FileTranscriptStore.LogActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Log an activity to the transcript
+            </summary>
+            <param name="activity">activity to log</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.FileTranscriptStore.GetTranscriptActivities(System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            Get activity records for conversationId
+            </summary>
+            <param name="channelId"></param>
+            <param name="conversationId"></param>
+            <param name="continuationToken"></param>
+            <param name="startDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.FileTranscriptStore.DeleteTranscript(System.String,System.String)">
+            <summary>
+            Delete a conversation
+            </summary>
+            <param name="channelId">channelid for the conversation</param>
+            <param name="conversationId">conversation id</param>
+            <param name="cancel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.FileTranscriptStore.ListTranscripts(System.String,System.String)">
+            <summary>
+            List conversations
+            </summary>
+            <param name="channelId"></param>
+            <param name="continuationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.IRecognizerConvert">
+            <summary>
+            Can convert from a generic recognizer result to a strongly typed one.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.IRecognizerConvert.Convert(System.Object)">
+            <summary>
+            Convert recognizer result.
+            </summary>
+            <param name="result">Result to convert.</param>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.IRecognizer">
+            <summary>
+            Interface for Recognizers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.IRecognizer.Recognize(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Runs an utterance through a recognizer and returns a generic recognizer result.
+            </summary>
+            <param name="utterance">Utterance to analyze.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Analysis of utterance.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.IRecognizer.Recognize``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Runs an utterance through a recognizer and returns a strongly typed recognizer result.
+            </summary>
+            <param name="utterance">Utterance to analyze.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Analysis of utterance.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.IStorage.Read(System.String[])">
+            <summary>
+            Read StoreItems from storage
+            </summary>
+            <param name="keys">keys of the storeItems to read</param>
+            <returns>StoreItem dictionary</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.IStorage.Write(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            Write StoreItems to storage
+            </summary>
+            <param name="changes"></param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.IStorage.Delete(System.String[])">
+            <summary>
+            Delete StoreItems from storage
+            </summary>
+            <param name="keys">keys of the storeItems to delete</param>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.IStoreItem.eTag">
+            <summary>
+            eTag for concurrency
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.StorageExtensions.Read``1(Microsoft.Bot.Builder.Core.Extensions.IStorage,System.String[])">
+            <summary>
+            Storage extension to Read as strong typed StoreItem objects
+            </summary>
+            <typeparam name="StoreItemT"></typeparam>
+            <param name="storage"></param>
+            <param name="keys"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.Transcript.ChannelId">
+            <summary>
+            ChannelId that the transcript was taken from
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.Transcript.Id">
+            <summary>
+            Conversation Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.Transcript.Created">
+            <summary>
+            Date conversation was started
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.PagedResult`1">
+            <summary>
+            Page of results from an enumeration
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.PagedResult`1.Items">
+            <summary>
+            Page of items
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.PagedResult`1.ContinuationToken">
+            <summary>
+            Token used to page through multiple pages
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.ITranscriptLogger">
+            <summary>
+            Transcript logger stores activities for conversations for recall
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.ITranscriptLogger.LogActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Log an activity to the transcript
+            </summary>
+            <param name="activity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.ITranscriptStore">
+            <summary>
+            Transcript logger stores activities for conversations for recall
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.ITranscriptStore.GetTranscriptActivities(System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            Get activities for a conversation (Aka the transcript)
+            </summary>
+            <param name="channelId">Channel id</param>
+            <param name="conversationId">Conversation id</param>
+            <param name="continuationToken">continuatuation token to page through results</param>
+            <param name="startDate">Earliest time to include.</param>
+            <returns>Enumeration over the recorded activities.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.ITranscriptStore.ListTranscripts(System.String,System.String)">
+            <summary>
+            List conversations in the channelId
+            </summary>
+            <param name="channelId"></param>
+            <param name="continuationToken">continuation token to get next page of results</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.ITranscriptStore.DeleteTranscript(System.String,System.String)">
+            <summary>
+            Delete a specific conversation and all of it's activities
+            </summary>
+            <param name="channelId">Channel where conversation took place.</param>
+            <param name="conversationId">Id of conversation to delete.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.DictionaryStorage">
+            <summary>
+            Models IStorage around a dictionary 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.MemoryStorage">
+            <summary>
+            RamStorage stores data in volative dictionary
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.MemoryTranscriptStore">
+            <summary>
+            The memory transcript store stores transcripts in volatile memory in a Dictionary.
+            </summary>
+            <note>
+            Because this uses an unbounded volitile dictionary this should only be used for unit tests or non-production environments
+            </note>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MemoryTranscriptStore.LogActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Log an activity to the transcript
+            </summary>
+            <param name="activity">activity to log</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MemoryTranscriptStore.GetTranscriptActivities(System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            Get activities from the memory transcript store
+            </summary>
+            <param name="channelId">channelId</param>
+            <param name="conversationId">conversationId</param>
+            <param name="continuationToken"></param>
+            <param name="startDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MemoryTranscriptStore.DeleteTranscript(System.String,System.String)">
+            <summary>
+            Delete a conversation
+            </summary>
+            <param name="channelId">channelid for the conversation</param>
+            <param name="conversationId">conversation id</param>
+            <param name="cancel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MemoryTranscriptStore.ListTranscripts(System.String,System.String)">
+            <summary>
+            List conversations in a channel 
+            </summary>
+            <param name="channelId"></param>
+            <param name="continuationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.MessageFactory">
+            <summary>
+            Contains utility methods for various message types a bot can return.
+            </summary>
+            <example>
+            <code>
+            // Create and send a message.
+            var message = MessageFactory.Text("Hello World");    
+            await context.SendActivity(message);    
+            </code>
+            </example>
+            <remarks>The following apply to message actions in general.
+            <para>See the channel's documentation for limits imposed upon the contents of
+            the text of the message to send.</para>
+            <para>To control various characteristics of your bot's speech such as voice,
+            rate, volume, pronunciation, and pitch, specify test to speak in
+            Speech Synthesis Markup Language (SSML) format.</para>
+            <para>
+            Channels decide how each card action manifests in their user experience. 
+            In most cases, the cards are clickable. In others, they may be selected by speech 
+            input. In cases where the channel does not offer an interactive activation 
+            experience (e.g., when interacting over SMS), the channel may not support 
+            activation whatsoever. The decision about how to render actions is controlled by 
+            normative requirements elsewhere in this document (e.g. within the card format, 
+            or within the suggested actions definition).</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Text(System.String,System.String,System.String)">
+            <summary>
+            Returns a simple text message.
+            </summary>
+            <example>
+            <code>    
+            // Create and send a message.
+            var message = MessageFactory.Text("Hello World");    
+            await context.SendActivity(message);    
+            </code>
+            </example>
+            <param name="text">The text of the message to send.</param>
+            <param name="ssml">Optional, text to be spoken by your bot on a speech-enabled
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting,
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is "acceptingInput".</param>
+            <returns>A message activity containing the text.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.SuggestedActions(System.Collections.Generic.IList{System.String},System.String,System.String,System.String)">
+            <summary>
+            Returns a message that includes a set of suggested actions and optional text.
+            </summary>
+            <example>
+            <code>
+            // Create the activity and add suggested actions.
+            var activity = MessageFactory.SuggestedActions(
+                new string[] { "red", "green", "blue" },
+                text: "Choose a color");
+            
+            // Send the activity as a reply to the user.
+            await context.SendActivity(activity);
+            </code>
+            </example>
+            <param name="actions">
+            The text of the actions to create.
+            </param>        
+            <param name="text">The text of the message to send.</param>
+            <param name="ssml">Optional, text to be spoken by your bot on a speech-enabled
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting,
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is "acceptingInput".</param>
+            <returns>A message activity containing the suggested actions.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="actions"/> is <c>null</c>.</exception>
+            <remarks>This method creates a suggested action for each string in <paramref name="actions"/>.
+            The created action uses the text for the <see cref="P:Microsoft.Bot.Schema.CardAction.Value"/> and
+            <see cref="P:Microsoft.Bot.Schema.CardAction.Title"/> and sets the <see cref="P:Microsoft.Bot.Schema.CardAction.Type"/> to
+            <see cref="F:Microsoft.Bot.Schema.ActionTypes.ImBack"/>.
+            </remarks>
+            <seealso cref="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.SuggestedActions(System.Collections.Generic.IList{Microsoft.Bot.Schema.CardAction},System.String,System.String,System.String)"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.SuggestedActions(System.Collections.Generic.IList{Microsoft.Bot.Schema.CardAction},System.String,System.String,System.String)">
+            <summary>
+            Returns a message that includes a set of suggested actions and optional text.
+            </summary>
+            <example>
+            <code>    
+            // Create the activity and add suggested actions.
+            var activity = MessageFactory.SuggestedActions(
+                new CardAction[]
+                {
+                    new CardAction(title: "red", type: ActionTypes.ImBack, value: "red"),
+                    new CardAction( title: "green", type: ActionTypes.ImBack, value: "green"),
+                    new CardAction(title: "blue", type: ActionTypes.ImBack, value: "blue")
+                }, text: "Choose a color");
+            
+            // Send the activity as a reply to the user.
+            await context.SendActivity(activity);
+            </code>
+            </example>
+            <param name="cardActions">
+            The card actions to include.
+            </param>        
+            <param name="text">Optional, the text of the message to send.</param>
+            <param name="ssml">Optional, text to be spoken by your bot on a speech-enabled
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting,
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is "acceptingInput".</param>
+            <returns>A message activity that contains the suggested actions.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="cardActions"/> is <c>null</c>.</exception>
+            <seealso cref="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.SuggestedActions(System.Collections.Generic.IList{System.String},System.String,System.String,System.String)"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Attachment(Microsoft.Bot.Schema.Attachment,System.String,System.String,System.String)">
+            <summary>
+            Returns a message activity that contains an attachment.
+            </summary>
+            <param name="attachment">Attachment to include in the message.</param>
+            <param name="text">Optional, the text of the message to send.</param>
+            <param name="ssml">Optional, text to be spoken by your bot on a speech-enabled
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting,
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is "acceptingInput".</param>
+            <returns>A message activity containing the attachment.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="attachment"/> is <c>null</c>.</exception>
+            <seealso cref="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Attachment(System.Collections.Generic.IList{Microsoft.Bot.Schema.Attachment},System.String,System.String,System.String)"/>
+            <seealso cref="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Carousel(System.Collections.Generic.IList{Microsoft.Bot.Schema.Attachment},System.String,System.String,System.String)"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Attachment(System.Collections.Generic.IList{Microsoft.Bot.Schema.Attachment},System.String,System.String,System.String)">
+            <summary>
+            Returns a message activity that contains a collection of attachments, in a list.
+            </summary>
+            <param name="attachments">The attachments to include in the message.</param>
+            <param name="text">Optional, the text of the message to send.</param>
+            <param name="ssml">Optional, text to be spoken by your bot on a speech-enabled
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting,
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is "acceptingInput".</param>
+            <returns>A message activity containing the attachment.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="attachments"/> is <c>null</c>.</exception>
+            <seealso cref="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Carousel(System.Collections.Generic.IList{Microsoft.Bot.Schema.Attachment},System.String,System.String,System.String)"/>
+            <seealso cref="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Attachment(Microsoft.Bot.Schema.Attachment,System.String,System.String,System.String)"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Carousel(System.Collections.Generic.IList{Microsoft.Bot.Schema.Attachment},System.String,System.String,System.String)">
+            <summary>
+            Returns a message activity that contains a collection of attachments, as a carousel.
+            </summary>
+            <param name="attachments">The attachments to include in the message.</param>
+            <param name="text">Optional, the text of the message to send.</param>
+            <param name="ssml">Optional, text to be spoken by your bot on a speech-enabled
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting,
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is "acceptingInput".</param>
+            <returns>A message activity containing the attachment.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="attachments"/> is <c>null</c>.</exception>
+            <example>This code creates and sends a carousel of HeroCards.
+            <code>
+            // Create the activity and attach a set of Hero cards.
+            var activity = MessageFactory.Carousel(
+            new Attachment[]
+            {
+                new HeroCard(
+                    title: "title1",
+                    images: new CardImage[] { new CardImage(url: "imageUrl1.png") },
+                    buttons: new CardAction[]
+                    {
+                        new CardAction(title: "button1", type: ActionTypes.ImBack, value: "item1")
+                    })
+                .ToAttachment(),
+                new HeroCard(
+                    title: "title2",
+                    images: new CardImage[] { new CardImage(url: "imageUrl2.png") },
+                    buttons: new CardAction[]
+                    {
+                        new CardAction(title: "button2", type: ActionTypes.ImBack, value: "item2")
+                    })
+                .ToAttachment(),
+                new HeroCard(
+                    title: "title3",
+                    images: new CardImage[] { new CardImage(url: "imageUrl3.png") },
+                    buttons: new CardAction[]
+                    {
+                        new CardAction(title: "button3", type: ActionTypes.ImBack, value: "item3")
+                    })
+                .ToAttachment()
+            });
+            
+            // Send the activity as a reply to the user.
+            await context.SendActivity(activity);
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.Attachment(System.Collections.Generic.IList{Microsoft.Bot.Schema.Attachment},System.String,System.String,System.String)"/>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.MessageFactory.ContentUrl(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns a message activity that contains a single image or video.
+            </summary>
+            <param name="url">The URL of the image or video to send.</param>
+            <param name="contentType">The MIME type of the image or video.</param>
+            <param name="name">Optional, the name of the image or video file.</param>
+            <param name="text">Optional, the text of the message to send.</param>
+            <param name="ssml">Optional, text to be spoken by your bot on a speech-enabled
+            channel.</param>
+            <param name="inputHint">Optional, indicates whether your bot is accepting,
+            expecting, or ignoring user input after the message is delivered to the client.
+            One of: "acceptingInput", "ignoringInput", or "expectingInput".
+            Default is null.</param>
+            <returns>A message activity containing the attachment.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> or <paramref name="contentType"/> is <c>null</c>, 
+            empty, or white space.</exception>
+            <example>This code creates a message activity that contains an image.
+            <code>
+            IMessageActivity message = 
+                MessageFactory.ContentUrl("https://{domainName}/cat.jpg", MediaTypeNames.Image.Jpeg, "Cat Picture");
+            </code>
+            </example>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.RecognizerResult">
+            <summary>
+            Recognizer return value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.RecognizerResult.Text">
+            <summary>
+            Original text to recognizer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.RecognizerResult.AlteredText">
+            <summary>
+            Text modified by recognizer for example by spell correction.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.RecognizerResult.Intents">
+            <summary>
+            Object with the intent as key and the confidence as value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.RecognizerResult.Entities">
+            <summary>
+            Object with each top-level recognized entity as a key.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Core.Extensions.RecognizerResult.Properties">
+            <summary>
+            Any extra properties to include in the results.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.RecognizerResult.Convert(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.RecognizerResultExtensions.GetTopScoringIntent(Microsoft.Bot.Builder.Core.Extensions.RecognizerResult)">
+            <summary>
+            Return the top scoring intent and its score.
+            </summary>
+            <param name="result">Recognizer result.</param>
+            <returns>Intent and score.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.ShowTypingMiddleware">
+            <summary>
+            When added, this middleware will send typing activities back to the user when a Message activity
+            is receieved to let them know that the bot has receieved the message and is working on the response.
+            You can specify a delay in milliseconds before the first typing activity is sent and then a frequency, 
+            also in milliseconds which determines how often another typing activity is sent. Typing activities 
+            will continue to be sent until your bot sends another message back to the user.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.Core.Extensions.ShowTypingMiddleware._delay">
+            <summary>
+            (Optional) initial delay before sending first typing indicator. Defaults to 500ms.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.Core.Extensions.ShowTypingMiddleware._freqency">
+            <summary>
+            (Optional) rate at which additional typing indicators will be sent. Defaults to every 2000ms.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.TranscriptLoggerMiddleware">
+            <summary>
+            When added, this middleware will log incoming and outgoing activitites to a ITranscriptStore 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.TranscriptLoggerMiddleware.#ctor(Microsoft.Bot.Builder.Core.Extensions.ITranscriptLogger)">
+            <summary>
+            Middleware for logging incoming and outgoing activities to a transcript store 
+            </summary>
+            <param name="transcriptLogger"></param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.TranscriptLoggerMiddleware.OnTurn(Microsoft.Bot.Builder.ITurnContext,Microsoft.Bot.Builder.MiddlewareSet.NextDelegate)">
+            <summary>
+            initialization for middleware turn
+            </summary>
+            <param name="context"></param>
+            <param name="nextTurn"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.TraceTranscriptLogger">
+            <summary>
+            TraceTranscriptLogger, writes activites to System.Diagnostics.Trace
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.TraceTranscriptLogger.LogActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Log an activity to the transcript
+            </summary>
+            <param name="activity">activity to log</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Core.Extensions.ConsoleTranscriptLogger">
+            <summary>
+            ConsoleTranscriptLogger , writes activites to Console output
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Core.Extensions.ConsoleTranscriptLogger.LogActivity(Microsoft.Bot.Schema.IActivity)">
+            <summary>
+            Log an activity to the transcript
+            </summary>
+            <param name="activity">activity to log</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

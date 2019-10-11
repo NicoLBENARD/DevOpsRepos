@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.Amqp</id>
+    <version>2.1.1</version>
+    <title>Microsoft Azure Amqp</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/Azure/azure-amqp/blob/master/LICENSE.txt</licenseUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
+    <description>Package for Azure AMQP</description>
+    <language>en-US</language>
+    <releaseNotes>TLS transport not working on UWP</releaseNotes>
+  </metadata>
+</package>

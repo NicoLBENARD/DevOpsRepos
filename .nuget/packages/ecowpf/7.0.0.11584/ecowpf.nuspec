@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>EcoWpf</id>
+    <version>7.0.0.11584</version>
+    <title>MDriven Framework Wpf</title>
+    <authors>MDriven AB</authors>
+    <owners>MDriven AB</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://wiki.mdriven.net/index.php/NugetLicense</licenseUrl>
+    <projectUrl>https://wiki.mdriven.net/index.php/NugetProject</projectUrl>
+    <iconUrl>http://www.capableobjects.com/Eco7Icon</iconUrl>
+    <description>https://wiki.mdriven.net/index.php/NugetProject</description>
+    <releaseNotes>Continued work details at https://wiki.mdriven.net/NugetProject</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>MDriven Framework ModelDrivenDevelopment ECO CapableObjects</tags>
+    <dependencies>
+      <dependency id="EcoCore" version="7.0.0.11584" />
+    </dependencies>
+  </metadata>
+</package>
