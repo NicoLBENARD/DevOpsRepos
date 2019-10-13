@@ -1,0 +1,22 @@
+﻿<!--
+WARNING: These targets are intended for building Microsoft's ASP.NET Core repos, and is not intended
+for use outside of Microsoft.
+-->
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)Common.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)ApiCheck.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)GenerateAssemblyInfo.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)Git.targets" />
+
+  <Import
+    Project="DotNetTool.targets"
+    Condition="'$(PackAsTool)' == 'true' AND '$(TargetFramework)' != ''" />
+
+  <Target Name="Resx"
+          DependsOnTargets="PrepareResourceNames;_CoreGenerateCSharpForResources" />
+
+  <Target Name="_ResolveEmbeddedResources"
+          DependsOnTargets="PrepareResourceNames"
+          Returns="@(EmbeddedResource)" />
+
+</Project>

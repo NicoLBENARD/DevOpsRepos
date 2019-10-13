@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.EventHubs</id>
+    <version>2.1.0</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/Azure/azure-event-hubs-dotnet/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-event-hubs-dotnet</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Azure/azure-event-hubs-dotnet/master/event-hubs.png</iconUrl>
+    <description>This is the next generation Azure Event Hubs .NET Standard client library. For more information about Event Hubs, see https://azure.microsoft.com/en-us/services/event-hubs/</description>
+    <releaseNotes>https://github.com/Azure/azure-event-hubs-dotnet/releases</releaseNotes>
+    <tags>Azure Event Hubs EventHubs .NET AMQP IoT</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Microsoft.Azure.Amqp" version="2.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Azure.Services.AppAuthentication" version="1.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.19.6" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.DiagnosticSource" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.IdentityModel.Tokens.Jwt" version="5.2.2" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.3" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="UAP10.0">
+        <dependency id="Microsoft.Azure.Amqp" version="2.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Azure.Services.AppAuthentication" version="1.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.19.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.NETCore.UniversalWindowsPlatform" version="5.2.3" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.DiagnosticSource" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.IdentityModel.Tokens.Jwt" version="5.2.2" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.3" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Azure.Amqp" version="2.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Azure.Services.AppAuthentication" version="1.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.19.6" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.DiagnosticSource" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.IdentityModel.Tokens.Jwt" version="5.2.2" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.3" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Serialization.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

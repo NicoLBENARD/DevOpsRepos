@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.WebJobs.Sources</id>
+    <version>3.0.10</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://go.microsoft.com/fwlink/?linkid=2028464</licenseUrl>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkID=320972</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Azure/azure-webjobs-sdk/dev/webjobs.png</iconUrl>
+    <description>Package Description</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Microsoft Azure WebJobs AzureFunctions</tags>
+    <repository type="git" url="https://github.com/Azure/azure-webjobs-sdk" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Azure.WebJobs.Core" version="3.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.EnvironmentVariables" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Json" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Hosting" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging.Configuration" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Dataflow" version="4.8.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/Converters/AsyncConverter.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/Converters/CompositeObjectToTypeConverter.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/Converters/ConversionResult.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/Converters/IAsyncObjectToTypeConverter.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/Converters/IdentityConverter.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/Converters/IObjectToTypeConverter.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/Triggers/ITriggerDataArgumentBinding.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/TypeUtility.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/DictionaryExtensions.cs" buildAction="Compile" />
+      <files include="cs/netstandard2.0/Microsoft.Azure.WebJobs.Sources/Sanitizer.cs" buildAction="Compile" />
+    </contentFiles>
+  </metadata>
+</package>
