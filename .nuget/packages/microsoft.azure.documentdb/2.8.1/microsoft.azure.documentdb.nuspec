@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.DocumentDB</id>
+    <version>2.8.1</version>
+    <title>Microsoft Azure Cosmos DB Client library</title>
+    <authors>Microsoft</authors>
+    <owners>azure-sdk,Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkID=509837</licenseUrl>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkID=509927</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
+    <description>This client library enables client applications to connect to Azure Cosmos DB via the SQL API. Azure Cosmos DB is a globally distributed, multi-model database service. For more information, refer to http://azure.microsoft.com/services/cosmos-db/.</description>
+    <summary>.NET Client library for Azure Cosmos DB (SQL) API</summary>
+    <releaseNotes>The change log for this SDK is made available at https://github.com/Azure/azure-documentdb-dotnet/blob/master/changelog.md at the time of release. The change log is also published on the Azure documentation site at https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet.</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>microsoft azure cosmos cosmosdb documentdb docdb nosql azureofficial</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Newtonsoft.Json" version="6.0.8" />
+        <dependency id="System.Net.Http" version="4.3.4" />
+      </group>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Newtonsoft.Json" version="6.0.8" />
+        <dependency id="System.Net.Http.WinHttpHandler" version="4.5.0" />
+        <dependency id="System.Net.Http" version="4.3.4" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

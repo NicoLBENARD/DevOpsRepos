@@ -1,0 +1,49 @@
+{
+  "runtimes": {
+    "debian.8-armel": {
+      "Microsoft.NETCore.App": {
+        "runtime.debian.8-armel.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    },
+    "linux-arm": {
+      "Microsoft.NETCore.App": {
+        "runtime.linux-arm.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    },
+    "linux-x64": {
+      "Microsoft.NETCore.App": {
+        "runtime.linux-x64.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    },
+    "osx-x64": {
+      "Microsoft.NETCore.App": {
+        "runtime.osx-x64.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    },
+    "tizen.4.0.0-armel": {
+      "Microsoft.NETCore.App": {
+        "runtime.tizen.4.0.0-armel.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    },
+    "win-arm": {
+      "Microsoft.NETCore.App": {
+        "runtime.win-arm.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    },
+    "win-arm64": {
+      "Microsoft.NETCore.App": {
+        "runtime.win-arm64.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    },
+    "win-x64": {
+      "Microsoft.NETCore.App": {
+        "runtime.win-x64.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    },
+    "win-x86": {
+      "Microsoft.NETCore.App": {
+        "runtime.win-x86.Microsoft.NETCore.App": "2.0.0-preview1-002111-00"
+      }
+    }
+  }
+}

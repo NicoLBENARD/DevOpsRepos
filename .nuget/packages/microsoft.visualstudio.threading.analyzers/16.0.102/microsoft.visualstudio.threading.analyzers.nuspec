@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.Threading.Analyzers</id>
+    <version>16.0.102</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/Microsoft/vs-threading</projectUrl>
+    <iconUrl>https://aka.ms/VsExtensibilityIcon</iconUrl>
+    <description>Static code analyzer to detect common mistakes or potential issues regarding threading and async coding.</description>
+    <releaseNotes>In the v16.0 release, analyzers require at least C# 7.3 (Visual Studio 2017 Update 7).</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>analyzers visualstudio vssdk sdk threading</tags>
+    <repository type="git" url="https://github.com/Microsoft/vs-threading" commit="5f97818a809c1e15086ea985b1c869535cf52584" />
+    <dependencies>
+      <group targetFramework=".NETStandard1.3" />
+    </dependencies>
+  </metadata>
+</package>

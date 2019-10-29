@@ -1,7 +1,0 @@
-<Project>
-  <PropertyGroup>
-    <MicrosoftAspNetCoreBuildToolsApiCheckPackageVersion>2.2.1-build-20190219.3</MicrosoftAspNetCoreBuildToolsApiCheckPackageVersion>
-    <MicrosoftBuildPackageVersion>15.8.166</MicrosoftBuildPackageVersion>
-    <JsonInMSBuildVersion>9.0.1</JsonInMSBuildVersion>
-  </PropertyGroup>
-</Project>
