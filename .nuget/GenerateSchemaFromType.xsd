@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-
-<!-- This is in a file named GenerateSchemas.xml. -->
-<xsd xmlns='http://microsoft.com/dotnet/tools/xsd/'>
-<generateSchemas>
-   <assembly>ConsoleApplication1.exe</assembly>
-</generateSchemas>
-</xsd>

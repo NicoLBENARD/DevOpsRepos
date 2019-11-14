@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="Class.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Windows_Runtime_Component_C___WinRT.def" />
+    <None Include="PropertySheet.props" />
+    <None Include="OcrResources\MsOcrRes.orp">
+      <Filter>OcrResources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="OcrResources">
+      <UniqueIdentifier>{f2e47663-c1a6-4c43-946b-51cd8f9bd5c7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
