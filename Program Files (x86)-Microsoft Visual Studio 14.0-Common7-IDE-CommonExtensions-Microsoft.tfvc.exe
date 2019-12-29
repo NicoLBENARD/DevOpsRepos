@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "E:\\"
+		},
+		{
+			"path": "C:\\"
+		},
+		{
+			"path": "F:\\"
+		},
+		{
+			"path": "L:\\"
+		},
+		{
+			"path": "D:\\"
+		}
+	],
+	"settings": {
+		"CurrentProjectSetting": 
+        "<path-to-tf-command-line>"}
+}
